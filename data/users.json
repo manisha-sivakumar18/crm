@@ -1,0 +1,20 @@
+{
+	"admin@crms.com": {
+		"name": "Admin",
+		"email": "amdin@crms.com",
+		"type": "admin",
+		"password": "admin"
+	},
+	"john.doe@crms.com": {
+		"name": "John Doe",
+		"email": "john.doe@crms.com",
+		"type": "employee",
+		"password": "password"
+	},
+	"m@crms.com": {
+		"name": "John Doe",
+		"email": "m@crms.com",
+		"type": "employee",
+		"password": "password"
+	}
+}

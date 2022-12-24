@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>CRMS</title>
+		<link rel="stylesheet" href="./styles/style.css" />
+		<link rel="shortcut icon" href="./assests/logo.svg" type="image/x-icon" />
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+		/>
+	</head>
+	<body>
+		<div class="main-container">
+			<div class="toast hide" id="toast">
+				<i class="fa fa-info-circle icon left"></i>
+				<span class="left" id="toast-content">
+					The email or password entered in invalid. Please try again.
+				</span>
+				<i class="fa fa-close icon right" id="toast-exit"></i>
+			</div>
+			<div class="login-container" id="login-container">
+				<div class="login-head-container">
+					<div class="head">
+						<img src="./assests/logo.svg" alt="" class="logo" />
+						<h1 class="title">CRMS</h1>
+					</div>
+					<div class="quote">Welcome to CRMS!</div>
+				</div>
+				<div class="login-form-container">
+					<div class="form-head">Log In</div>
+					<form
+						action=""
+						class="login-form"
+						id="login-form"
+						onsubmit="validateLogin();return false"
+					>
+						<label for="username">Username</label>
+						<input
+							type="text"
+							class="input-box"
+							id="username"
+							pattern="^\w+([\.-]?\w+)*(@crms\.com)$"
+							title="Please enter your CRMS mail"
+							required
+						/>
+						<label for="password">Password</label>
+						<input type="password" class="input-box" id="password" required />
+						<button type="submit" class="btn" id="login">Log In</button>
+					</form>
+				</div>
+			</div>
+			<div class="user-container hide" id="user-container">
+				<div class="navigation" id="admin-navigation">
+					<div class="head head-title">
+						<img src="./assests/logo.svg" alt="" class="logo" />
+						<h1 class="title">CRMS</h1>
+					</div>
+					<form class="nav-list" id="nav-list">
+						<input type="radio" name="nav" id="lead" value="lead" checked />
+						<label for="lead" class="selected">Leads</label>
+
+						<input type="radio" name="nav" id="contact" value="contact" />
+						<label for="contact">Contacts</label>
+
+						<input
+							type="radio"
+							name="nav"
+							id="opportunities"
+							value="opportunities"
+						/>
+						<label for="opportunities">Opportunities</label>
+
+						<input type="radio" name="nav" id="employee" value="employee" />
+						<label for="employee" id="employee-label">Employee Details</label>
+					</form>
+				</div>
+
+				<div class="content">
+					<div class="title-bar">
+						<div class="head current-user" id="current-user">
+							<i class="fa fa-user fa-2x"></i>
+							<h2>Admin</h2>
+							<div class="logout hide" id="logout">Logout</div>
+						</div>
+					</div>
+					<div class="main-content-container" id="main-content-container"></div>
+					<div class="main-content-container hide" id="lead-container">
+						<div class="content-title">
+							<h2>Lead</h2>
+							<div class="options">
+								<button class="btn" id="add-lead" onclick="showAddLeadForm()">
+									Add new Lead
+								</button>
+							</div>
+						</div>
+						<div class="bucket-container">
+							<div class="main-content">
+								<div class="bucket-title">Open</div>
+								<div
+									class="lead-list"
+									id="open"
+									ondrop="drop(event)"
+									ondragover="allowDrop(event)"
+								>
+									<div class="lead">
+										<div class="info">
+											<span>Lead Name</span>
+											<span>Company</span>
+											<span>Status</span>
+										</div>
+										<div class="options">
+											<i class="fa fa-edit"></i>
+											<i class="fa fa-trash"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="main-content">
+								<div class="bucket-title">Working</div>
+								<div
+									class="lead-list"
+									id="working"
+									ondrop="drop(event)"
+									ondragover="allowDrop(event)"
+								>
+									<div class="lead">
+										<div class="info">
+											<span>Lead Name</span>
+											<span>Company</span>
+											<span>Status</span>
+										</div>
+										<div class="options">
+											<i class="fa fa-edit"></i>
+											<i class="fa fa-trash"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="main-content">
+								<div class="bucket-title">Converted</div>
+								<div
+									class="lead-list"
+									id="converted"
+									ondrop="drop(event)"
+									ondragover="allowDrop(event)"
+								>
+									<div class="lead">
+										<div class="info">
+											<span>Lead Name</span>
+											<span>Company</span>
+											<span>Status</span>
+										</div>
+										<div class="options">
+											<i class="fa fa-edit"></i>
+											<i class="fa fa-trash"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="main-content">
+								<div class="bucket-title">Not Converted</div>
+								<div
+									class="lead-list"
+									id="notConverted"
+									ondrop="drop(event)"
+									ondragover="allowDrop(event)"
+								>
+									<div class="lead">
+										<div class="info">
+											<span>Lead Name</span>
+											<span>Company</span>
+											<span>Status</span>
+										</div>
+										<div class="options">
+											<i class="fa fa-edit"></i>
+											<i class="fa fa-trash"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="main-content-container hide" id="contact-container">
+						<div class="content-title">
+							<h2>Contacts</h2>
+							<div class="options">
+								<button
+									class="btn"
+									id="add-contact"
+									onclick="showAddContactForm()"
+								>
+									Add new Contact
+								</button>
+							</div>
+						</div>
+						<div class="main-content contact-content" id="contact-content">
+							<div class="contact">
+								<div class="info">
+									<span>Contact Name</span>
+									<span>Company</span>
+									<span>Status</span>
+								</div>
+								<div class="options">
+									<i class="fa fa-edit"></i>
+									<i class="fa fa-trash"></i>
+								</div>
+							</div>
+							<div class="contact">
+								<div class="info">
+									<span>Contact Name</span>
+									<span>Company</span>
+									<span>Status</span>
+								</div>
+								<div class="options">
+									<i class="fa fa-edit"></i>
+									<i class="fa fa-trash"></i>
+								</div>
+							</div>
+							<div class="contact">
+								<div class="info">
+									<span>Contact Name</span>
+									<span>Company</span>
+									<span>Status</span>
+								</div>
+								<div class="options">
+									<i class="fa fa-edit"></i>
+									<i class="fa fa-trash"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="main-content-container hide" id="opportunities-container">
+						<div class="content-title">
+							<h2>Opportunities</h2>
+							<div class="options">
+								<button
+									class="btn"
+									id="add-opportunity"
+									onclick="showAddOpportunityForm()"
+								>
+									Add new Opportunity
+								</button>
+							</div>
+						</div>
+						<div class="main-content opportunity-content">
+							<div class="opportunity opportunity-head">
+								<span>Opportunity Name</span>
+								<span>Account Name</span>
+								<span>Status</span>
+								<span>Close Date</span>
+								<span>Amount</span>
+							</div>
+							<div id="opportunity-content">
+								<div class="opportunity">
+									<span>Opportunity Name</span>
+									<span>Account Name</span>
+									<span>Status</span>
+									<span>Close Date</span>
+									<span>Amount</span>
+									<div class="options">
+										<i class="fa fa-edit"></i>
+										<i class="fa fa-trash"></i>
+									</div>
+								</div>
+								<div class="opportunity">
+									<span>Opportunity Name</span>
+									<span>Account Name</span>
+									<span>Status</span>
+									<span>Close Date</span>
+									<span>Amount</span>
+									<div class="options">
+										<i class="fa fa-edit"></i>
+										<i class="fa fa-trash"></i>
+									</div>
+								</div>
+								<div class="opportunity">
+									<span>Opportunity Name</span>
+									<span>Account Name</span>
+									<span>Status</span>
+									<span>Close Date</span>
+									<span>Amount</span>
+									<div class="options">
+										<i class="fa fa-edit"></i>
+										<i class="fa fa-trash"></i>
+									</div>
+								</div>
+								<div class="opportunity">
+									<span>Opportunity Name</span>
+									<span>Account Name</span>
+									<span>Status</span>
+									<span>Close Date</span>
+									<span>Amount</span>
+									<div class="options">
+										<i class="fa fa-edit"></i>
+										<i class="fa fa-trash"></i>
+									</div>
+								</div>
+								<div class="opportunity">
+									<span>Opportunity Name</span>
+									<span>Account Name</span>
+									<span>Status</span>
+									<span>Close Date</span>
+									<span>Amount</span>
+									<div class="options">
+										<i class="fa fa-edit"></i>
+										<i class="fa fa-trash"></i>
+									</div>
+								</div>
+								<div class="opportunity">
+									<span>Opportunity Name</span>
+									<span>Account Name</span>
+									<span>Status</span>
+									<span>Close Date</span>
+									<span>Amount</span>
+									<div class="options">
+										<i class="fa fa-edit"></i>
+										<i class="fa fa-trash"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="main-content-container hide" id="employee-container">
+						<div class="content-title">
+							<h2>Employee</h2>
+							<div class="options">
+								<button
+									class="btn"
+									id="add-employee"
+									onclick="showAddEmployeeForm()"
+								>
+									Add new Employee
+								</button>
+							</div>
+						</div>
+						<div class="main-content employee-content">
+							<div class="employee employee-head">
+								<span>Employee ID</span>
+								<span>Name</span>
+								<span>Leads converted</span>
+								<span>Leads Open</span>
+								<span>Closed Won</span>
+							</div>
+							<div id="employee-content">
+								<div class="employee">
+									<span>Employee ID</span>
+									<span>Name</span>
+									<span>Leads converted</span>
+									<span>Leads Open</span>
+									<span>Closed Won</span>
+									<div class="options">
+										<i class="fa fa-edit"></i>
+										<i class="fa fa-trash"></i>
+									</div>
+								</div>
+								<div class="employee">
+									<span>Employee ID</span>
+									<span>Name</span>
+									<span>Leads converted</span>
+									<span>Leads Open</span>
+									<span>Closed Won</span>
+									<div class="options">
+										<i class="fa fa-edit"></i>
+										<i class="fa fa-trash"></i>
+									</div>
+								</div>
+								<div class="employee">
+									<span>Employee ID</span>
+									<span>Name</span>
+									<span>Leads converted</span>
+									<span>Leads Open</span>
+									<span>Closed Won</span>
+									<div class="options">
+										<i class="fa fa-edit"></i>
+										<i class="fa fa-trash"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-window hide" id="lead-form-window">
+				<div class="add-or-edit-form">
+					<header class="add-or-edit-form-head">
+						<h3 id="form-head">New Lead</h3>
+						<i class="fa fa-close" id="lead-close"></i>
+					</header>
+					<form
+						class="info-form"
+						id="lead-info-form"
+						onsubmit="addOrEditLead(event);return false;"
+						action="#"
+					>
+						<label for="name" class="imp">Name</label>
+						<div class="name">
+							<select name="salutation" class="input-box">
+								<option value="none">Salutation</option>
+								<option value="Mr.">Mr.</option>
+								<option value="Ms.">Ms.</option>
+								<option value="Mrs.">Mrs.</option>
+								<option value="Dr.">Dr.</option>
+								<option value="Prof.">Prof.</option>
+							</select>
+							<input
+								type="text"
+								placeholder="*First Name"
+								class="input-box"
+								name="firstName"
+								required
+							/>
+							<input
+								type="text"
+								placeholder="Last Name"
+								class="input-box"
+								name="lastName"
+							/>
+						</div>
+
+						<label for="company" class="imp">Company</label>
+						<input type="text" class="input-box" name="company" required />
+						<label for="leadTitle">Title</label>
+						<input type="text" class="input-box" name="leadTitle" />
+						<label for="industry">Industry</label>
+						<input type="text" class="input-box" name="industry" />
+						<label for="mobile">Mobile</label>
+						<input type="tel" class="input-box" name="mobile" />
+						<label for="email" class="imp">Email</label>
+						<input type="email" class="input-box" name="email" required />
+						<label for="status" class="imp">Lead Status</label>
+						<select name="status" class="input-box" id="status" required>
+							<option value="open">Open - Not Contacted</option>
+							<option value="working">Working - Contacted</option>
+							<option value="converted">Closed - Converted</option>
+							<option value="notConverted">Closed - Not Converted</option>
+						</select>
+						<div class="buttons">
+							<button
+								class="btn submit"
+								name="add"
+								id="lead-add"
+								type="submit"
+								value="add"
+							>
+								Add lead
+							</button>
+							<button
+								class="btn submit hide"
+								name="edit"
+								id="lead-edit"
+								type="submit"
+								value="edit"
+								disabled
+							>
+								Save Changes
+							</button>
+							<button class="btn" id="lead-cancel" type="reset">Cancel</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="form-window hide" id="contact-form-window">
+				<div class="add-or-edit-form">
+					<header class="add-or-edit-form-head">
+						<h3 id="form-head">New Contact</h3>
+						<i class="fa fa-close" id="contact-close"></i>
+					</header>
+					<form
+						class="info-form"
+						id="contact-info-form"
+						onsubmit="addOrEditContact(event);return false;"
+						action="#"
+					>
+						<label for="name" class="imp">Name</label>
+						<div class="name">
+							<select name="salutation" class="input-box">
+								<option value="none">Salutation</option>
+								<option value="Mr.">Mr.</option>
+								<option value="Ms.">Ms.</option>
+								<option value="Mrs.">Mrs.</option>
+								<option value="Dr.">Dr.</option>
+								<option value="Prof.">Prof.</option>
+							</select>
+							<input
+								type="text"
+								placeholder="*First Name"
+								class="input-box"
+								name="firstName"
+								required
+							/>
+							<input
+								type="text"
+								placeholder="Last Name"
+								class="input-box"
+								name="lastName"
+							/>
+						</div>
+
+						<label for="account" class="imp">Account</label>
+						<input type="text" class="input-box" name="account" required />
+						<label for="contactTitle">Title</label>
+						<input type="text" class="input-box" name="contactTitle" />
+						<label for="industry">Industry</label>
+						<input type="text" class="input-box" name="industry" />
+						<label for="mobile">Mobile</label>
+						<input type="tel" class="input-box" name="mobile" />
+						<label for="email" class="imp">Email</label>
+						<input type="email" class="input-box" name="email" required />
+						<div class="buttons">
+							<button
+								class="btn submit"
+								name="add"
+								id="contact-add"
+								type="submit"
+								value="add"
+							>
+								Add Contact
+							</button>
+							<button
+								class="btn submit hide"
+								name="edit"
+								id="contact-edit"
+								type="submit"
+								value="edit"
+								disabled
+							>
+								Save Changes
+							</button>
+							<button class="btn" id="contact-cancel" type="reset">
+								Cancel
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="form-window hide" id="opportunity-form-window">
+				<div class="add-or-edit-form">
+					<header class="add-or-edit-form-head">
+						<h3 id="form-head">New Opportunity</h3>
+						<i class="fa fa-close" id="opportunity-close"></i>
+					</header>
+					<form
+						class="info-form"
+						id="opportunity-info-form"
+						onsubmit="addOrEditOpportunity(event);return false;"
+						action="#"
+					>
+						<label for="opportunityName" class="imp">Opportunity Name</label>
+						<input type="text" class="input-box" name="opportunityName" />
+
+						<label for="account" class="imp">Account</label>
+						<input type="text" class="input-box" name="account" required />
+						<label for="amount" class="imp">Amount</label>
+						<input type="text" class="input-box" name="amount" />
+						<label for="closeDate" class="imp">Close Date</label>
+						<input type="date" class="input-box" name="closeDate" required />
+						<label for="stage" class="imp">Stage</label>
+						<select name="stage" class="input-box" id="stage">
+							<option value="prospecting">Prospecting</option>
+							<option value="qualification">Qualification</option>
+							<option value="needs-analysis">Needs Analysis</option>
+							<option value="proposals">Proposals</option>
+							<option value="negotiation">Negotiation</option>
+							<option value="closed-win">Closed Win</option>
+							<option value="closed-loss">Closed Loss</option>
+						</select>
+						<label for="probability">Probability (in %)</label>
+						<input type="number" class="input-box" name="probability" />
+						<div class="buttons">
+							<button
+								class="btn submit"
+								name="add"
+								id="opportunity-add"
+								type="submit"
+								value="add"
+							>
+								Add Opportunity
+							</button>
+							<button
+								class="btn submit hide"
+								name="edit"
+								id="opportunity-edit"
+								type="submit"
+								value="edit"
+								disabled
+							>
+								Save Changes
+							</button>
+							<button class="btn" id="opportunity-cancel" type="reset">
+								Cancel
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="form-window hide" id="employee-form-window">
+				<div class="add-or-edit-form">
+					<header class="add-or-edit-form-head">
+						<h3 id="form-head">New Employee</h3>
+						<i class="fa fa-close" id="employee-close"></i>
+					</header>
+					<form
+						class="info-form"
+						id="employee-info-form"
+						onsubmit="addOrEditEmployee(event);return false;"
+						action="#"
+					>
+						<label for="employeeName" class="imp">Employee Name</label>
+						<input type="text" class="input-box" name="employeeName" />
+						<label for="id" class="imp">ID</label>
+						<input type="text" class="input-box" name="id" required />
+						<label for="title" class="imp">Title</label>
+						<input type="text" name="empTitle" class="input-box" required />
+						<label for="personalEmail" class="imp">Personal Email ID</label>
+						<input
+							type="email"
+							name="personalEmail"
+							class="input-box"
+							required
+						/>
+						<label for="email" class="imp">CRMS Email ID</label>
+						<input type="email" name="email" class="input-box" required />
+						<label for="phoneNo" class="imp">Phone No.</label>
+						<input type="tel" name="phoneNo" class="input-box" required />
+
+						<div class="buttons">
+							<button
+								class="btn submit"
+								name="add"
+								id="employee-add"
+								type="submit"
+								value="add"
+							>
+								Add Employee
+							</button>
+							<button
+								class="btn submit hide"
+								name="edit"
+								id="employee-edit"
+								type="submit"
+								value="edit"
+								disabled
+							>
+								Save Changes
+							</button>
+							<button class="btn" id="employee-cancel" type="reset">
+								Cancel
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script src="./scripts/webAPI.js"></script>
+		<script src="./scripts/leads.js"></script>
+		<script src="./scripts/contact.js"></script>
+		<script src="./scripts/opportunity.js"></script>
+		<script src="./scripts/employee.js"></script>
+		<script src="./scripts/login.js"></script>
+	</body>
+</html>

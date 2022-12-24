@@ -1,0 +1,14 @@
+.contact-content {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(3, 1fr);
+}
+
+.contact {
+	background: var(--light-yellow);
+	border-radius: 1em;
+	display: flex;
+	justify-content: space-between;
+	margin: 2em;
+	padding: 1em;
+}

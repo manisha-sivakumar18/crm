@@ -1,0 +1,14 @@
+.opportunity {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr) 0.5fr;
+	justify-items: center;
+	background: var(--light-yellow);
+	border-radius: 1em;
+	padding: 0.5em;
+	margin: 0.5em;
+}
+
+.opportunity-head {
+	background: var(--dark-gray);
+	color: var(--primary-white);
+}

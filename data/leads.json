@@ -1,0 +1,142 @@
+{
+	"john.doe@crms.com": {
+		"open": {
+			"n@gmail.com": {
+				"salutation": "none",
+				"firstName": "n",
+				"lastName": "6",
+				"company": "n",
+				"title": "",
+				"industry": "",
+				"mobile": "",
+				"email": "n@gmail.com",
+				"status": "open",
+				"leadOwner": "john.doe@crms.com"
+			},
+			"m@gmail.com": {
+				"salutation": "none",
+				"firstName": "m",
+				"lastName": "",
+				"company": "m",
+				"title": "",
+				"industry": "",
+				"mobile": "",
+				"email": "m@gmail.com",
+				"status": "open",
+				"leadOwner": "john.doe@crms.com"
+			}
+		},
+		"working": {
+			"m@gmail.com": {
+				"salutation": "none",
+				"firstName": "m",
+				"lastName": "5",
+				"company": "m",
+				"title": "",
+				"industry": "",
+				"mobile": "",
+				"email": "m@gmail.com",
+				"status": "working",
+				"leadOwner": "john.doe@crms.com"
+			}
+		},
+		"converted": {
+			"mm@gmail.com": {
+				"salutation": "none",
+				"firstName": "m",
+				"lastName": "",
+				"company": "m",
+				"title": "",
+				"industry": "",
+				"mobile": "",
+				"email": "mm@gmail.com",
+				"status": "converted",
+				"leadOwner": "john.doe@crms.com"
+			}
+		},
+		"notConverted": {
+			"mm@gmail.com": {
+				"salutation": "none",
+				"firstName": "m",
+				"lastName": "",
+				"company": "m",
+				"title": "",
+				"industry": "",
+				"mobile": "",
+				"email": "mm@gmail.com",
+				"status": "notConverted",
+				"leadOwner": "john.doe@crms.com"
+			},
+			"a@gmail.com": {
+				"salutation": "none",
+				"firstName": "mmm",
+				"lastName": "",
+				"company": "m",
+				"title": "",
+				"industry": "",
+				"mobile": "",
+				"email": "a@gmail.com",
+				"status": "notConverted",
+				"leadOwner": "john.doe@crms.com"
+			}
+		}
+	},
+	"m@crms.com": {
+		"open": {
+			"a@gmail.com": {
+				"salutation": "none",
+				"firstName": "mmm",
+				"lastName": "",
+				"company": "m",
+				"title": "",
+				"industry": "",
+				"mobile": "",
+				"email": "a@gmail.com",
+				"status": "notConverted",
+				"leadOwner": "john.doe@crms.com"
+			}
+		},
+		"working": {
+			"a@gmail.com": {
+				"salutation": "none",
+				"firstName": "mmm",
+				"lastName": "",
+				"company": "m",
+				"title": "",
+				"industry": "",
+				"mobile": "",
+				"email": "a@gmail.com",
+				"status": "notConverted",
+				"leadOwner": "john.doe@crms.com"
+			}
+		},
+		"converted": {
+			"a@gmail.com": {
+				"salutation": "none",
+				"firstName": "mmm",
+				"lastName": "",
+				"company": "m",
+				"title": "",
+				"industry": "",
+				"mobile": "",
+				"email": "a@gmail.com",
+				"status": "notConverted",
+				"leadOwner": "m@crms.com"
+			}
+		},
+		"notConverted": {
+			"a@gmail.com": {
+				"salutation": "none",
+				"firstName": "mmm",
+				"lastName": "",
+				"company": "m",
+				"title": "",
+				"industry": "",
+				"mobile": "",
+				"email": "a@gmail.com",
+				"status": "notConverted",
+				"leadOwner": "m@crms.com"
+			}
+		}
+	}
+}

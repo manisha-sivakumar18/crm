@@ -1,0 +1,85 @@
+.toast {
+	background-color: var(--bg-warning-red);
+	border-radius: 1em;
+	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+	color: var(--primary-white);
+	left: 50%;
+	min-width: 250px;
+	padding: 0.5em 1em;
+	position: fixed;
+	text-align: center;
+	top: 2em;
+	transform: translate(-50%, 0);
+	z-index: 10;
+}
+
+.login-container {
+	align-items: center;
+	background: var(--dark-gray);
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: center;
+}
+
+.login-head-container {
+	color: var(--golden-yellow);
+	font-size: 1.5em;
+}
+
+.head {
+	align-items: center;
+	display: flex;
+	gap: 0.5em;
+	justify-content: center;
+}
+
+.logo {
+	height: 2em;
+}
+
+.quote {
+	font-size: 2em;
+}
+
+.login-form-container {
+	background: var(--primary-white);
+	border-radius: 2em;
+	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.28);
+	margin: 2em;
+}
+
+.form-head {
+	background: var(--primary-black);
+	border-radius: 1em 1em 0 0;
+	color: var(--primary-white);
+	font-size: 1.5em;
+	padding: 1em 2em;
+	text-align: center;
+}
+
+.login-form {
+	border-radius: 0 0 1em 1em;
+	display: flex;
+	flex-direction: column;
+	padding: 2em 4em;
+}
+
+.input-box {
+	border-radius: 1em;
+	margin-bottom: 1em;
+	margin-top: 0.5em;
+	padding: 0.5em 1em;
+}
+
+.btn {
+	background-color: var(--dark-gray);
+	border: none;
+	border-radius: 1em;
+	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.28);
+	color: var(--primary-white);
+	font-family: inherit;
+	margin: 0 auto;
+	padding: 1em;
+	width: max-content;
+}

@@ -1,0 +1,40 @@
+.content-title {
+	align-items: center;
+	align-self: center;
+	display: flex;
+	justify-content: space-between;
+	margin: 0 2em;
+	padding: 0 2em;
+}
+
+.bucket-container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.bucket-title {
+	background-color: var(--dark-gray);
+	border-radius: 0.8em 1em 0 0;
+	color: var(--primary-white);
+	padding: 1em;
+	text-align: center;
+}
+
+.lead {
+	background: var(--light-yellow);
+	border-radius: 1em;
+	display: flex;
+	justify-content: space-between;
+	margin: 2em;
+	padding: 1em;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+}
+
+.options {
+	display: flex;
+	gap: 1em;
+}
